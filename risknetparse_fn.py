@@ -123,7 +123,7 @@ def parsehtml(html_page):
     for t in text: rawtext += '{} '.format(t)
             
     
-    #print(text)
+    #print(rawtext)
     output = ''
     for t in text:
         #print(t.parent.name)
@@ -133,6 +133,7 @@ def parsehtml(html_page):
             #print ('add...' + t.parent.name + '    text-->', t)
         #else:
             #print ('skip...' + t.parent.name + '    text-->', t)
+    return output
 
 
 def main():
@@ -154,9 +155,11 @@ def main():
         print (link)
         html_page = gethtml(link)
         #print(html_page)
-    
-        output = parsehtml(html_page) 
         
+        writefile("news-html" + str(++i) + ".txt", html_page)
+        
+        output = parsehtml(html_page) 
+        #print(output)
         writefile("news" + str(++i) + ".txt", output)
         print ('---------------------Done-------------------------')
 
